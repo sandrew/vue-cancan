@@ -13,8 +13,8 @@ function checkSubject(abilitySubject, checkedSubject) {
 
 exports.default = {
   $can: function $can(action, subject) {
-    return this.abilities.find(function (ability) {
-      return ability.can && ability.subjects.find(function (abilitySubject) {
+    return this.rules.find(function (ability) {
+      return ability.base_behavior && ability.subjects.find(function (abilitySubject) {
         return checkSubject(abilitySubject, subject);
       }) && ability.actions.find(function (abilityAction) {
         return checkAction(abilityAction, action);
@@ -24,7 +24,7 @@ exports.default = {
   install: function install(Vue, options) {
     var _this = this;
 
-    this.abilities = options.abilities;
+    this.rules = options.rules;
 
     Vue.prototype.$can = function (action, subject) {
       return _this.$can(action, subject);

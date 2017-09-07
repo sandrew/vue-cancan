@@ -1,6 +1,6 @@
 {
   "name": "vue-cancan",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Vue.js integration with Rails CanCan authorization library",
   "main": "dist/vue-cancan.js",
   "scripts": {

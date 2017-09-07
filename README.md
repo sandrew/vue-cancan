@@ -17,7 +17,7 @@ import Vue from 'vue'
 import VueCanCan from 'vue-cancan'
 
 // window.abilities - are exported JSON abilities from CanCan, read further.
-Vue.use(VueCanCan, { abilities: window.abilities });
+Vue.use(VueCanCan, { rules: window.abilities.rules });
 ```
 
 In your routes definition:
@@ -38,8 +38,27 @@ router.beforeEach(VueCanCan.navigationGuard('/'));
 
 ## 2. In Rails app
 
-TODO...
+From the Rails side everything you need is to pass current_ability's JSON exported rules to the application. You can do it with gem `gon` or just with a template:
 
+```html
+<script>
+window.abilities = <%= current_ability.to_json.html_safe %>
+</script>
+
+CanCanCan gem in fresh version provides `ability.as_json` method. If for some reason you use older versions, you can add this method to your `Ability` class:
+
+```ruby
+def as_json(foo)
+  rules.map do |rule|
+    {
+      base_behavior: rule.base_behavior,
+      actions:       rule.actions.as_json,
+      subjects:      rule.subjects.map(&:to_s),
+      conditions:    rule.conditions.as_json
+    }
+  end
+end
+```
 # Usage
 
 ## In templates
@@ -74,7 +93,7 @@ For more complicated checks you can use `v-if` directive with Vue method `$can`:
 router.beforeEach(VueCanCan.navigationGuard('/'));
 ```
 
-This is a construction that adds navigation guard for Router to check if user has access to the URL. It works by parsing requested path and interprets it in this way:
+This construction adds navigation guard for Router to check if user has access to the URL. It works by parsing requested path and interprets it in this way:
 
 `/users/new` will be challenged against `$can('new', 'users')`, `/users` will be challenged against `$can('index', 'users')`.
 

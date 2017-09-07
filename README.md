@@ -44,6 +44,7 @@ From the Rails side everything you need is to pass current_ability's JSON export
 <script>
 window.abilities = <%= current_ability.to_json.html_safe %>
 </script>
+```
 
 CanCanCan gem in fresh version provides `ability.as_json` method. If for some reason you use older versions, you can add this method to your `Ability` class:
 

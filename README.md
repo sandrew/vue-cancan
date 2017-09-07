@@ -10,10 +10,10 @@ This is a plugin for seamless integration of Vue.js application with Rails backe
 yarn add vue-cancan
 ```
 
-In your app entry point file:
+In your app's entry point file:
 
 ```javascript
-import VueCanCan from 'main/cancan'
+import VueCanCan from 'vue-cancan'
 
 // window.abilities - are exported JSON abilities from CanCan, read further.
 Vue.use(VueCanCan, { abilities: window.abilities });

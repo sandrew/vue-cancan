@@ -76,7 +76,7 @@ This is equal to Rails erb template:
 
 ```
 <% if can? :index, User %>
-  <div id='navbar-item' v-can.index.users>
+  <div id='navbar-item'>
     <a href='/admin/users'>Users Administration</a>
   </div>
 <% end %>
@@ -85,7 +85,7 @@ This is equal to Rails erb template:
 For more complicated checks you can use `v-if` directive with Vue method `$can`:
 
 ```html
-<td v-if="$can('edit', 'users') || this.$can('destroy', 'users')">User operations</td>
+<td v-if="$can('edit', 'users') || $can('destroy', 'users')">User operations</td>
 ```
 
 ## In routes

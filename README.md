@@ -87,6 +87,10 @@ For more complicated checks you can use `v-if` directive with Vue method `$can`:
 ```html
 <td v-if="$can('edit', 'users') || $can('destroy', 'users')">User operations</td>
 ```
+Usage with conditions (send the needed object as the third argument):
+```html
+<td v-if="$can('edit', 'User', user) || $can('destroy', 'User', user })">User operations</td>
+```
 
 ## In routes
 

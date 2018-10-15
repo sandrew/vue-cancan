@@ -1,10 +1,10 @@
 {
   "name": "vue-cancan",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Vue.js integration with Rails CanCan authorization library",
   "main": "dist/vue-cancan.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --require babel-core/register test/can.js",
     "build": "babel src/vue-cancan.js --out-file dist/vue-cancan.js"
   },
   "repository": {
@@ -24,8 +24,10 @@
   },
   "homepage": "https://github.com/sandrew/vue-cancan#readme",
   "devDependencies": {
+    "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.0",
+    "mocha": "^5.2.0",
     "vue": "^2.3.3",
     "vue-router": "^2.7.0",
     "webpack": "^2.6.1"

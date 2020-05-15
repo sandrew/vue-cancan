@@ -1,12 +1,12 @@
 function checkAction(abilityAction, checkedAction) {
   return (abilityAction == 'manage') ||
-    (abilityAction == checkedAction) ||
-    (abilityAction == 'read' && (checkedAction == 'index' || checkedAction == 'show'));
+    		 (abilityAction == checkedAction) ||
+    		 (abilityAction == 'read' && (checkedAction == 'index' || checkedAction == 'show'));
 }
 
 function checkSubject(abilitySubject, checkedSubject) {
   return (abilitySubject == 'all') ||
-    (abilitySubject == checkedSubject);
+    		 (abilitySubject == checkedSubject);
 }
 
 export default {
@@ -31,7 +31,7 @@ export default {
 
     Vue.directive('can', {
       inserted: (el, binding) => {
-        if (!this.$can(Object.keys(binding.modifiers)[0], Object.keys(binding.modifiers)[1])) {
+        if(!this.$can(Object.keys(binding.modifiers)[0], Object.keys(binding.modifiers)[1])) {
           el.remove();
         }
       }
@@ -42,7 +42,7 @@ export default {
     return (to, from, next) => {
       const subject = to.path.replace(/^\//, '').split('/')[0] || 'index';
       const action = to.path.replace(/^\//, '').split('/')[1] || 'index';
-      if (this.$can(action, subject)) {
+      if(this.$can(action, subject)) {
         next()
       } else {
         next(defaultPath);

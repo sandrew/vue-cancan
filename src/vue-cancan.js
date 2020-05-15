@@ -1,12 +1,12 @@
 function checkAction(abilityAction, checkedAction) {
   return (abilityAction == 'manage') ||
-    		 (abilityAction == checkedAction) ||
-    		 (abilityAction == 'read' && (checkedAction == 'index' || checkedAction == 'show'));
+         (abilityAction == checkedAction) ||
+         (abilityAction == 'read' && (checkedAction == 'index' || checkedAction == 'show'));
 }
 
 function checkSubject(abilitySubject, checkedSubject) {
   return (abilitySubject == 'all') ||
-    		 (abilitySubject == checkedSubject);
+         (abilitySubject == checkedSubject);
 }
 
 export default {

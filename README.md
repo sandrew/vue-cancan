@@ -98,6 +98,27 @@ This construction adds navigation guard for Router to check if user has access t
 
 `/users/new` will be challenged against `$can('new', 'users')`, `/users` will be challenged against `$can('index', 'users')`.
 
+## Update rules
+
+```
+this.$root.setRules(rulesArray);
+```
+
+You can update the rules from a Vue component.
+
+```
+this._vm.setRules(rulesArray);
+```
+
+Or update the rules from inside of Vuex store.
+
+
+```
+this._vm.setRules([]);
+```
+
+Or remove the current set of rules as well.
+
 ## Abilities definition
 
 The convention is the same as for Rails' `cancan` gem. `manage` action covers any possible actions, `all` subject covers any possible subjects. Ability to `manage` `all` - is a superuser ability.

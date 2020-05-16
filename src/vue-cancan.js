@@ -18,10 +18,16 @@ export default {
     }) && true;
   },
 
+  setRules(rules) {
+    this.rules = rules;
+  },
+
   install(Vue, options) {
     this.rules = options.rules;
 
     Vue.prototype.$can = (action, subject) => this.$can(action, subject);
+
+    Vue.prototype.setRules = (rules) => this.setRules(rules);
 
     Vue.directive('can', {
       inserted: (el, binding) => {

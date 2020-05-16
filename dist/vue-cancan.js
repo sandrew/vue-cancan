@@ -21,6 +21,9 @@ exports.default = {
       });
     }) && true;
   },
+  setRules: function setRules(rules) {
+    this.rules = rules;
+  },
   install: function install(Vue, options) {
     var _this = this;
 
@@ -28,6 +31,10 @@ exports.default = {
 
     Vue.prototype.$can = function (action, subject) {
       return _this.$can(action, subject);
+    };
+
+    Vue.prototype.setRules = function (rules) {
+      return _this.setRules(rules);
     };
 
     Vue.directive('can', {

@@ -29,11 +29,11 @@ exports.default = {
 
     this.rules = options.rules;
 
-    Vue.globalProperties.$can = function (action, subject) {
+    Vue.config.globalProperties.$can = function (action, subject) {
       return _this.$can(action, subject);
     };
 
-    Vue.globalProperties.setRules = function (rules) {
+    Vue.config.globalProperties.setRules = function (rules) {
       return _this.setRules(rules);
     };
 

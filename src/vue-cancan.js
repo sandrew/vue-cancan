@@ -25,9 +25,9 @@ export default {
   install(Vue, options) {
     this.rules = options.rules;
 
-    Vue.prototype.$can = (action, subject) => this.$can(action, subject);
+    Vue.config.globalProperties.$can = (action, subject) => this.$can(action, subject);
 
-    Vue.prototype.setRules = (rules) => this.setRules(rules);
+    Vue.config.globalProperties.setRules = (rules) => this.setRules(rules);
 
     Vue.directive('can', {
       inserted: (el, binding) => {
